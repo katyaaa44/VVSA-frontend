@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Transaction } from '../models/transaction.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +13,7 @@ export class TransactionsService {
   private http = inject(HttpClient);
   getTransactions$() {
   return this.http.get<{ 
-  data: ITransaction[]}>(`/api/transactions`);
+  data: Transaction[]}>(`/api/transactions`);
   
 }
-}
-
-export interface ITransaction {
-  transactionId: number;
-  fullName: string;
-  transactionType: number;
-  accountNumber: string;
-  bankCode: string;
-  issueDate: Date;
-  amount: number;
-
 }
