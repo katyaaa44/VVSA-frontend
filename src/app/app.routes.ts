@@ -24,6 +24,6 @@ export const routes: Routes = [
         path: 'basic-accounts',
         loadComponent: () =>
         import('./basic-accounts/transactions-list/transactions-list.component')
-            .then(m => m.BasicAccountsDetailComponent)
+            .then(m => m.TransactionsListComponent)
     },
 ];
