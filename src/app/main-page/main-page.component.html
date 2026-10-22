@@ -1,0 +1,67 @@
+<div class="main-page">
+  <h1>Main menu</h1>
+
+  <div class="menu">
+    <button class="menu-button" routerLink="/basic-accounts">
+      Basic account
+    </button>
+
+    <button class="menu-button" routerLink="/debit-card">
+      Debit card
+    </button>
+
+    <button class="menu-button" routerLink="/credit-card">
+      Credit card
+    </button>
+  </div>
+</div>
+
+<style>
+  .main-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    font-family: Arial, sans-serif;
+    background: #f7f8fa;
+  }
+
+  .main-page h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 600;
+    color: #222;
+  }
+
+  .menu {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .menu-button {
+    min-width: 180px;
+    padding: 14px 24px;
+    border: 1px solid #d0d5dd;
+    border-radius: 10px;
+    background: white;
+    color: #222;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+
+  .menu-button:hover {
+    background: #f0f2f5;
+    border-color: #aab2bd;
+    transform: translateY(-1px);
+  }
+
+  .menu-button:active {
+    transform: translateY(0);
+  }
+</style>
