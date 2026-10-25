@@ -1,19 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Transaction } from '../models/transaction.model';
+
+export interface ITransactionsResponse {
+  data: Transaction[];
+}
 
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TransactionsService {
 
   constructor() { }
 
   private http = inject(HttpClient);
-  getTransactions$() {
-  return this.http.get<{ 
-  data: Transaction[]}>(`/api/transactions`);
+
+  getTransactions$() : Observable<ITransactionsResponse>{
+    return this.http.get<ITransactionsResponse>(`/api/transactions`);
   
 }
 }

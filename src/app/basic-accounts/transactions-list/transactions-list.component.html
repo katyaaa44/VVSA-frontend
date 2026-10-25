@@ -1,1 +1,41 @@
-<p>transactions-list works!</p>
+<section class="transactions">
+  <h2>Transaction history</h2>
+
+  @if (transactions$ | async; as response) {
+    @if (response.data.length > 0) {
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Transaction ID</th>
+              <th>Full name</th>
+              <th>Transaction type</th>
+              <th>Account number</th>
+              <th>Bank code</th>
+              <th>Issue date</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @for (transaction of response.data; track transaction.transactionId) {
+              <tr>
+                <td>{{ transaction.transactionId }}</td>
+                <td>{{ transaction.fullName }}</td>
+                <td>{{ transaction.transactionType }}</td>
+                <td>{{ transaction.accountNumber }}</td>
+                <td>{{ transaction.bankCode }}</td>
+                <td>{{ transaction.issueDate | date:'dd.MM.yyyy' }}</td>
+                <td>{{ transaction.amount | number:'1.2-2' }} €</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    } @else {
+      <p>No transactions to display.</p>
+    }
+  } @else {
+    <p>Loading transactions...</p>
+  }
+</section>
