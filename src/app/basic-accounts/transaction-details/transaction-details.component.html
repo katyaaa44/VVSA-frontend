@@ -1,0 +1,42 @@
+
+@if (transaction$ | async; as response) {
+  <div class="transaction-details">
+    <h3>Transaction details</h3>
+
+    <div class="detail-row">
+      <span class="label">Full name</span>
+      <span>{{ response.data.fullName }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Transaction type</span>
+      <span>{{ response.data.transactionType | transactionType }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Account number</span>
+      <span>{{ response.data.accountNumber }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Bank code</span>
+      <span>{{ response.data.bankCode }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Issue date</span>
+      <span>
+        {{ response.data.issueDate | date:'dd.MM.yyyy' }}
+      </span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Amount</span>
+      <strong>
+        {{ response.data.amount | number:'1.2-2' }} €
+      </strong>
+    </div>
+  </div>
+} @else {
+  <p>Loading transaction details...</p>
+}

@@ -1,0 +1,43 @@
+
+.transaction-details {
+  padding: 20px 24px;
+  background-color: #f8f9fa;
+  border-left: 4px solid #800020;
+}
+
+.transaction-details h3 {
+  margin: 0 0 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.detail-row span:last-child,
+.detail-row strong {
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.detail-row strong {
+  color: #111827;
+  font-size: 16px;
+}

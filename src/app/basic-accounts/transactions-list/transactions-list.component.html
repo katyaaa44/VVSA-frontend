@@ -19,7 +19,14 @@
 
           <tbody>
             @for (transaction of response.data; track transaction.transactionId) {
-              <tr>
+              <tr
+                class="transaction-row"
+                (click)="toggleDetails(transaction.transactionId)"
+                (keydown.enter)="toggleDetails(transaction.transactionId)"
+                (keydown.space)="$event.preventDefault(); toggleDetails(transaction.transactionId)"
+                tabindex="0"
+                [attr.aria-expanded]="selectedTransactionId === transaction.transactionId"
+              >
                 <td>{{ transaction.transactionId }}</td>
                 <td>{{ transaction.fullName }}</td>
                 <td>{{ transaction.transactionType }}</td>
@@ -28,6 +35,13 @@
                 <td>{{ transaction.issueDate | date:'dd.MM.yyyy' }}</td>
                 <td>{{ transaction.amount | number:'1.2-2' }} €</td>
               </tr>
+              @if (selectedTransactionId === transaction.transactionId) {
+                <tr class="details-row">
+                    <td colspan="7">
+                        <app-transaction-details [transactionId]="transaction.transactionId" />
+                    </td>
+                </tr>
+              }
             }
           </tbody>
         </table>

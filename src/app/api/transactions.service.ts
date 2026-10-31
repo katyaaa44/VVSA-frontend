@@ -7,6 +7,9 @@ export interface ITransactionsResponse {
   data: Transaction[];
 }
 
+export interface ITransactionDetailResponse {
+  data: Transaction;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +23,11 @@ export class TransactionsService {
 
   getTransactions$() : Observable<ITransactionsResponse>{
     return this.http.get<ITransactionsResponse>(`/api/transactions`);
-  
-}
+  }
+
+  getTransactionById$(id: number): Observable<ITransactionDetailResponse> {
+    return this.http.get<ITransactionDetailResponse>(
+      `/api/transactions/${id}`
+    );
+  }
 }
