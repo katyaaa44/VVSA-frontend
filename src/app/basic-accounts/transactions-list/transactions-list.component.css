@@ -1,17 +1,87 @@
 
+.transactions {
+  padding: 28px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  color: #333333;
+  min-height: 100%;
+}
+
+.transactions h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #333333;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead {
+  background-color: #f2f2f2;
+  color: #444444;
+}
+
+th {
+  padding: 16px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+td {
+  padding: 15px 18px;
+  font-size: 14px;
+  color: #555555;
+  border-bottom: 1px solid #eeeeee;
+  white-space: nowrap;
+}
+
 .transaction-row {
   cursor: pointer;
+  background-color: #ffffff;
+  transition: background-color 0.2s ease;
 }
 
 .transaction-row:hover {
-  background-color: #f3f4f6;
+  background-color: #f5f5f5;
 }
 
 .transaction-row:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid #aaaaaa;
   outline-offset: -2px;
 }
 
-.details-row > td {
-  padding: 0;
+.details-row {
+  background-color: #f7f7f7;
+}
+
+.details-row td {
+  padding: 22px 24px;
+  white-space: normal;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.transactions p {
+  margin-top: 16px;
+  color: #888888;
+  font-size: 15px;
 }
