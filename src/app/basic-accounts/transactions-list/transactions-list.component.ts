@@ -5,11 +5,12 @@ import { Observable } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TransactionDetailsComponent } from '../transaction-details/transaction-details.component';
+import { TransactionTypePipe } from '../../utils/pipes/transaction-type.pipe';
 
 @Component({
   selector: 'app-transactions-list',
   standalone: true,
-  imports: [RouterLink, CommonModule, TransactionDetailsComponent],
+  imports: [RouterLink, CommonModule, TransactionDetailsComponent, TransactionTypePipe],
   templateUrl: './transactions-list.component.html',
   styleUrl: './transactions-list.component.css'
 })

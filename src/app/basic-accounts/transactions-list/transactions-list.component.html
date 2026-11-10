@@ -29,7 +29,7 @@
               >
                 <td>{{ transaction.transactionId }}</td>
                 <td>{{ transaction.fullName }}</td>
-                <td>{{ transaction.transactionType }}</td>
+                <td>{{ transaction.transactionType | transactionType }}</td>
                 <td>{{ transaction.accountNumber }}</td>
                 <td>{{ transaction.bankCode }}</td>
                 <td>{{ transaction.issueDate | date:'dd.MM.yyyy' }}</td>
