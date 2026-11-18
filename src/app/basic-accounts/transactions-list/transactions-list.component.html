@@ -1,49 +1,58 @@
-<section class="transactions">
-  <h2>Transaction history</h2>
+<section aria-labelledby="account-title">
+  <header class="account-header">
+    <a class="back-link" routerLink="/">← Main menu</a>
+    <h1 id="account-title">Basic account</h1>
+  </header>
 
-  @if (transactions$ | async; as response) {
-    @if (response.data.length > 0) {
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Full name</th>
-              <th>Transaction type</th>
-              <th>Issue date</th>
-              <th>Amount</th>
+  <section class="history" aria-labelledby="history-title">
+    <div class="history-heading">
+      <h2 id="history-title">Transaction history</h2>
+      <p>Select a transaction to view its details.</p>
+    </div>
+
+    @if (transactions$ | async; as response) {
+      @if (response.data.length > 0) {
+        <table aria-labelledby="history-title" role="table">
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">Full name</th>
+              <th scope="col" role="columnheader">Transaction type</th>
+              <th scope="col" role="columnheader">Issue date</th>
+              <th scope="col" role="columnheader">Amount</th>
             </tr>
           </thead>
-
-          <tbody>
+          <tbody role="rowgroup">
             @for (transaction of response.data; track transaction.transactionId) {
-              <tr
-                class="transaction-row"
-                (click)="toggleDetails(transaction.transactionId)"
-                (keydown.enter)="toggleDetails(transaction.transactionId)"
-                (keydown.space)="$event.preventDefault(); toggleDetails(transaction.transactionId)"
-                tabindex="0"
-                [attr.aria-expanded]="selectedTransactionId === transaction.transactionId"
-              >
-                <td>{{ transaction.fullName }}</td>
-                <td>{{ transaction.transactionType | transactionType }}</td>
-                <td>{{ transaction.issueDate | date:'dd.MM.yyyy' }}</td>
-                <td>{{ transaction.amount | number:'1.2-2' }} €</td>
+              <tr class="transaction-row" role="row"
+                [class.expanded]="selectedTransactionId === transaction.transactionId"
+                (click)="toggleDetails(transaction.transactionId)">
+                <td class="name" role="cell">
+                  <button type="button" class="transaction-button"
+                    [attr.aria-expanded]="selectedTransactionId === transaction.transactionId"
+                    (click)="$event.stopPropagation(); toggleDetails(transaction.transactionId)">
+                    <span class="chevron" aria-hidden="true"></span>
+                    {{ transaction.fullName }}
+                  </button>
+                </td>
+                <td class="type" role="cell"><span class="type-label">{{ transaction.transactionType | transactionType }}</span></td>
+                <td class="date" role="cell">{{ transaction.issueDate | date:'dd.MM.yyyy' }}</td>
+                <td class="amount" role="cell">{{ transaction.amount | number:'1.2-2' }} €</td>
               </tr>
               @if (selectedTransactionId === transaction.transactionId) {
-                <tr class="details-row">
-                    <td colspan="7">
-                        <app-transaction-details [transactionId]="transaction.transactionId" />
-                    </td>
+                <tr class="details-row" role="row">
+                  <td colspan="4" role="cell">
+                    <app-transaction-details [transactionId]="transaction.transactionId" />
+                  </td>
                 </tr>
               }
             }
           </tbody>
         </table>
-      </div>
+      } @else {
+        <p class="status" role="status">No transactions to display.</p>
+      }
     } @else {
-      <p>No transactions to display.</p>
+      <p class="status" role="status">Loading transactions...</p>
     }
-  } @else {
-    <p>Loading transactions...</p>
-  }
+  </section>
 </section>

@@ -1,1 +1,27 @@
-<router-outlet></router-outlet>
+<header class="site-header">
+  <div class="page-width header-inner">
+    <a class="brand" routerLink="/">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m3 9 9-5 9 5v2H3zm2 11h14M7 14v3m5-3v3m5-3v3"/>
+        </svg>
+      </span>
+      VVSA Banking
+    </a>
+    <nav aria-label="Main navigation">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">Home</a>
+      <a routerLink="/basic-accounts" routerLinkActive="active" ariaCurrentWhenActive="page">Accounts</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page-width">
+  <router-outlet />
+</main>
+
+<footer class="site-footer">
+  <div class="page-width footer-inner">
+    <span>VVSA Banking</span>
+    <a routerLink="/">Main menu</a>
+  </div>
+</footer>

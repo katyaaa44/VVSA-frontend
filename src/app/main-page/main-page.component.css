@@ -1,0 +1,50 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: clamp(175px, 24vw, 255px);
+  padding: clamp(24px, 5vw, 60px);
+  border-radius: 22px;
+  background: linear-gradient(115deg, #9e102a, #c8102e 65%, #d81d3b);
+  color: white;
+}
+
+.hero p { margin-top: 12px; line-height: 1.5; color: #fff1f3; }
+.hero-art { position: absolute; z-index: -1; right: 5%; width: min(31%, 290px); }
+.products { margin-top: clamp(26px, 4vw, 42px); }
+.menu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
+
+.menu-card {
+  position: relative;
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 8px;
+  min-height: 154px;
+  padding: 20px 44px 20px 20px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  transition: border-color .18s, transform .18s;
+}
+
+.menu-card:hover { border-color: var(--red); transform: translateY(-2px); }
+.product-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--red-soft); color: var(--red-dark); margin-bottom: 3px; }
+.product-icon svg { width: 22px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.product-name { font-size: 1.04rem; font-weight: 720; }
+.product-description { color: var(--muted); font-size: .88rem; }
+.arrow { position: absolute; top: 24px; right: 16px; color: var(--red-dark); font-size: 1.3rem; line-height: 1; }
+
+@media (max-width: 600px) {
+  .hero-art { width: 125px; right: -28px; bottom: -16px; opacity: .4; }
+  .hero p { max-width: 24ch; }
+  .menu { grid-template-columns: 1fr; gap: 10px; }
+  .menu-card { min-height: 0; grid-template-columns: 42px minmax(0, 1fr); align-items: center; column-gap: 12px; row-gap: 3px; padding: 14px 44px 14px 14px; }
+  .product-icon { grid-row: 1 / span 2; margin: 0; }
+  .product-description { grid-column: 2; }
+  .arrow { top: 50%; translate: 0 -50%; }
+}

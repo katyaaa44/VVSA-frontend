@@ -1,87 +1,59 @@
-
-.transactions {
-  padding: 28px;
-  width: 100%;
-  box-sizing: border-box;
-  background-color: #ffffff;
-  color: #333333;
-  min-height: 100%;
+.account-header {
+  padding: clamp(20px, 4vw, 38px);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--red);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
 
-.transactions h2 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 24px;
-  color: #333333;
-}
+.back-link { display: inline-flex; align-items: center; min-height: 44px; margin-bottom: 4px; color: var(--red-dark); font-weight: 650; text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
 
-.table-container {
-  width: 100%;
-  overflow-x: auto;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  background-color: #ffffff;
-}
+.history { margin-top: clamp(16px, 3vw, 28px); border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: var(--shadow); }
+.history-heading { padding: clamp(16px, 3vw, 26px); }
+.history-heading p, .status { color: var(--muted); font-size: .9rem; }
+.history-heading p { margin-top: 5px; }
+.status { padding: 0 20px 20px; }
 
-table {
-  width: 100%;
-  min-width: 850px;
-  border-collapse: collapse;
-  text-align: left;
-}
+table { width: 100%; border-collapse: collapse; text-align: left; font-size: .9rem; }
+th, td { padding: 13px clamp(12px, 2vw, 24px); overflow-wrap: anywhere; }
+th { background: var(--canvas); color: var(--muted); font-weight: 650; }
+th:last-child, .amount { text-align: right; }
+td { border-top: 1px solid var(--line); }
+.transaction-row { cursor: pointer; transition: background-color .16s; }
+.transaction-row:hover, .transaction-row.expanded { background: var(--red-soft); }
+.transaction-button { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; border: 0; padding: 0 4px; background: transparent; color: var(--ink); cursor: pointer; font-weight: 700; text-align: left; }
+.chevron { flex: 0 0 7px; height: 7px; border: solid var(--red-dark); border-width: 0 2px 2px 0; rotate: -45deg; transition: rotate .16s; }
+.expanded .chevron { rotate: 45deg; }
+.type-label { display: inline-block; border-radius: 20px; padding: 5px 10px; background: var(--canvas); color: var(--muted); font-size: .8rem; }
+.date { color: var(--muted); font-variant-numeric: tabular-nums; }
+.amount { font-weight: 750; font-variant-numeric: tabular-nums; }
+.details-row td { padding: clamp(12px, 2.5vw, 24px); background: #fafafb; }
 
-thead {
-  background-color: #f2f2f2;
-  color: #444444;
-}
-
-th {
-  padding: 16px 18px;
-  font-size: 13px;
-  font-weight: 600;
-  white-space: nowrap;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-td {
-  padding: 15px 18px;
-  font-size: 14px;
-  color: #555555;
-  border-bottom: 1px solid #eeeeee;
-  white-space: nowrap;
-}
-
-.transaction-row {
-  cursor: pointer;
-  background-color: #ffffff;
-  transition: background-color 0.2s ease;
-}
-
-.transaction-row:hover {
-  background-color: #f5f5f5;
-}
-
-.transaction-row:focus-visible {
-  outline: 2px solid #aaaaaa;
-  outline-offset: -2px;
-}
-
-.details-row {
-  background-color: #f7f7f7;
-}
-
-.details-row td {
-  padding: 22px 24px;
-  white-space: normal;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.transactions p {
-  margin-top: 16px;
-  color: #888888;
-  font-size: 15px;
+@media (max-width: 640px) {
+  .history { background: transparent; box-shadow: none; border: 0; }
+  .history-heading { padding-inline: 0; }
+  table, tbody, .details-row, .details-row td { display: block; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .transaction-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "name amount" "type date";
+    align-items: center;
+    gap: 2px 8px;
+    padding: 9px 12px 12px;
+    margin-bottom: 9px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
+  }
+  .transaction-row.expanded { background: var(--red-soft); margin-bottom: 0; border-radius: 12px 12px 0 0; }
+  .transaction-row td { border: 0; padding: 0; }
+  .name { grid-area: name; }
+  .type { grid-area: type; }
+  .date { grid-area: date; text-align: right; }
+  .amount { grid-area: amount; max-width: 25vw; }
+  .details-row td { margin-bottom: 9px; border: 1px solid var(--line); border-top: 0; border-radius: 0 0 12px 12px; }
+  .status { padding-inline: 0; }
 }

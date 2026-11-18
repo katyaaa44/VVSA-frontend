@@ -1,67 +1,42 @@
-<div class="main-page">
-  <h1>Main menu</h1>
-
-  <div class="menu">
-    <button class="menu-button" routerLink="/basic-accounts">
-      Basic account
-    </button>
-
-    <button class="menu-button" routerLink="/debit-card">
-      Debit card
-    </button>
-
-    <button class="menu-button" routerLink="/credit-card">
-      Credit card
-    </button>
+<section class="hero" aria-labelledby="menu-title">
+  <div>
+    <h1 id="menu-title">Main menu</h1>
+    <p>Choose an account or card to get started.</p>
   </div>
-</div>
+  <svg viewBox="0 0 240 150" fill="none" aria-hidden="true" class="hero-art">
+    <circle cx="128" cy="74" r="68" fill="white" fill-opacity=".09"/>
+    <rect x="77" y="32" width="123" height="79" rx="12" transform="rotate(12 77 32)" stroke="white" stroke-opacity=".44" stroke-width="2"/>
+    <rect x="36" y="55" width="126" height="80" rx="12" fill="#ad0c28" stroke="white" stroke-opacity=".68" stroke-width="2"/>
+    <path d="M36 76h126M52 109h26m8 0h12" stroke="white" stroke-opacity=".76" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="137" cy="111" r="7" fill="white" fill-opacity=".75"/>
+    <circle cx="127" cy="111" r="7" fill="white" fill-opacity=".36"/>
+  </svg>
+</section>
 
-<style>
-  .main-page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
-    font-family: Arial, sans-serif;
-    background: #f7f8fa;
-  }
-
-  .main-page h1 {
-    margin: 0;
-    font-size: 32px;
-    font-weight: 600;
-    color: #222;
-  }
-
-  .menu {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .menu-button {
-    min-width: 180px;
-    padding: 14px 24px;
-    border: 1px solid #d0d5dd;
-    border-radius: 10px;
-    background: white;
-    color: #222;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.2s ease;
-  }
-
-  .menu-button:hover {
-    background: #f0f2f5;
-    border-color: #aab2bd;
-    transform: translateY(-1px);
-  }
-
-  .menu-button:active {
-    transform: translateY(0);
-  }
-</style>
+<section class="products" aria-labelledby="products-title">
+  <h2 id="products-title">Accounts and cards</h2>
+  <div class="menu">
+    <a class="menu-card" routerLink="/basic-accounts">
+      <span class="product-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16v13H4zM7 7V4h10v3m-2 6h5m-5 3h5"/></svg>
+      </span>
+      <span class="product-name">Basic account</span>
+      <span class="product-description">View transaction history</span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="menu-card" routerLink="/debit-card">
+      <span class="product-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18m-14 5h4"/></svg>
+      </span>
+      <span class="product-name">Debit card</span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="menu-card" routerLink="/credit-card">
+      <span class="product-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18m-7 5h3"/></svg>
+      </span>
+      <span class="product-name">Credit card</span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>

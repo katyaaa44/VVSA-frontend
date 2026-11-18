@@ -1,0 +1,28 @@
+:host { display: flex; flex-direction: column; min-height: 100vh; }
+main { flex: 1; padding-block: clamp(26px, 5vw, 64px); }
+.site-header, .site-footer { background: var(--surface); }
+.site-header { border-bottom: 1px solid var(--line); }
+.site-footer { border-top: 1px solid var(--line); }
+
+.header-inner, .footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-block: 14px;
+}
+
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 750; }
+.brand-mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; color: white; background: var(--red); }
+.brand-mark svg { width: 23px; }
+nav { display: flex; gap: 4px; }
+nav a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 12px; border-radius: 8px; font-size: .9rem; font-weight: 650; text-decoration: none; color: var(--muted); }
+nav a:hover, nav a.active { background: var(--red-soft); color: var(--red-dark); }
+.footer-inner { min-height: 72px; color: var(--muted); font-size: .875rem; }
+.footer-inner a:hover { color: var(--red-dark); }
+
+@media (max-width: 350px) {
+  .header-inner { gap: 4px 10px; }
+  nav a { padding-inline: 8px; }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test VVSA with Playwright"
+  short_description: "Otestuj VVSA a zdokumentuj kroky screenshotmi"
+  default_prompt: "Otestuj VVSA-frontend pomocou Playwright a vrat tabulku vysledkov so screenshotmi."
